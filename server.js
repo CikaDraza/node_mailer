@@ -11,6 +11,8 @@ app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json({ limit: '50mb' }));
 
+app.get('/favicon.ico', (req, res) => res.status(204));
+
 // Endpoint za obradu POST zahteva sa kontakt forme
 app.post('/api/contact', async (req, res) => {
   const data = req.body; // Podaci sa kontakt forme
