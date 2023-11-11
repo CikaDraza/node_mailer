@@ -90,6 +90,7 @@ app.post('/api/contact', async (req, res) => {
   try {
     await transporter.sendMail(userMailOptions);
     console.log('E-mail korisniku poslat');
+    res.status(200).json({ message: 'E-mail korisniku poslat' });
   } catch (error) {
     console.error('Greška prilikom slanja e-maila korisniku:', error);
     // Ovde možete dodati dodatnu logiku ili tretman greške ako je potrebno
@@ -100,6 +101,7 @@ app.post('/api/contact', async (req, res) => {
     await transporter.sendMail(mailOptions);
     console.log('E-mail poslat');
     res.json({ message: 'Podaci su primljeni i obradjeni na serveru. E-mail je poslat.' });
+    res.status(200).json({ message: 'Mejl poslat!' });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: 'Došlo je do greške prilikom slanja e-maila.' });
@@ -111,3 +113,5 @@ const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
+
+module.exports = app;
