@@ -31,7 +31,7 @@ app.post('/api/contact', async (req, res) => {
       <p>Prezime: ${data.last_name}</p>
       <p>E-mail: ${data.email}</p>
       <p>Telefon: ${data.phone}</p>
-      <p>Subscription: ${data.subscription === 'allowExtraEmails' ? 'Zelim da se pretplatim' : 'ne zelim da se pretplatim'}</p>
+      <p>Subscription: ${data.subscribe === 'allowExtraEmails' ? 'Zelim da se pretplatim' : 'ne zelim da se pretplatim'}</p>
       <p style="font-weigth: bold">Prostorije:</p>
       <ul> ${data.room.map(room =>
       `<li key=${room}>${room}</li>`
