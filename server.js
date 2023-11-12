@@ -6,6 +6,23 @@ require('dotenv').config();
 
 const app = express();
 app.use(cors());
+const corsOptions = {
+  origin: 'https://keramicar-lale.online', // Prilagodite ovu vrednost na osnovu vašeg domena
+  methods: 'GET,HEAD,POST',
+  credentials: true,
+  optionsSuccessStatus: 204,
+};
+
+app.post('/api/contact', cors(corsOptions), async (req, res) => {
+  // Vaš kod za rute
+});
+
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', 'https://keramicar-lale.online');
+  res.header('Access-Control-Allow-Methods', 'GET, POST');
+  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  next();
+});
 
 // Middlewares
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -17,7 +34,7 @@ app.get('/', (req, res) => {
 
 
 // Endpoint za obradu POST zahteva sa kontakt forme
-app.post('/api/contact', async (req, res) => {
+app.post('/api/contact', cors(corsOptions), async (req, res) => {
   const data = req.body; // Podaci sa kontakt forme
 
   try {
