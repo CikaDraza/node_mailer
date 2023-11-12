@@ -21,7 +21,6 @@ app.post('/api/contact', async (req, res) => {
   const data = req.body; // Podaci sa kontakt forme
 
   try {
-    / // Konfiguracija Nodemailer transporter-a
     const transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
